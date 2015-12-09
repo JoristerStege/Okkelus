@@ -4,6 +4,7 @@ using System.Collections;
 public class MovingWall : MonoBehaviour 
 {
     public GameObject wall;
+    public GameObject player;
     private bool moveWall;
     public AudioClip ambientClip;
     public AudioClip jumpscareClip;
@@ -22,8 +23,8 @@ public class MovingWall : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
     {
-        Debug.Log(Vector3.Distance(wall.transform.position, transform.position));
-        if (Vector3.Distance(wall.transform.position, transform.position) <= 1.8f)
+        float distance = wall.transform.position.z - player.transform.position.z;
+        if (distance < 1.8f)
         {
             moveWall = false;
         }
@@ -31,12 +32,12 @@ public class MovingWall : MonoBehaviour
         {
             if (!playOnce) { audio.PlayOneShot(jumpscareClip, 0.7f); playOnce = true; }
         }
-
+        
         if (Input.GetKeyUp(KeyCode.Y))
         {
-            if (!playOnce) { audio.PlayOneShot(jumpscareClip, 0.7f); playOnce = true; }
+            //if (!playOnce) { audio.PlayOneShot(jumpscareClip, 0.7f); playOnce = true; }
         }
-        Debug.Log(Vector3.Distance(transform.position, wall.transform.position));
+        //Debug.Log(Vector3.Distance(transform.position, wall.transform.position));
 	}
 
     void FixedUpdate()
