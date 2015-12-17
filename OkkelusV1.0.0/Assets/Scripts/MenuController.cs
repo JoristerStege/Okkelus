@@ -71,6 +71,7 @@ public class MenuController : MonoBehaviour {
                     Application.LoadLevel("Credits");
                     break;
                 case 2:
+                    Application.Quit(); 
                     break;
                 default:
                     break;
