@@ -16,12 +16,17 @@ public class DoorScript : MonoBehaviour
     public float startAngleZ;
     public float EndAngleZ;
     public float rotateAmountZ;
+	private bool useDoor;
 
     void DoorOpen()
     {
-        transform.Rotate(
+        useDoor = true;
+    }
+	void FixedUpdate()
+	{
+		transform.Rotate(
             transform.eulerAngles.x < EndAngleX ? rotateAmountX : 0,
             transform.eulerAngles.y < EndAngleY ? rotateAmountY : 0,
             transform.eulerAngles.z < EndAngleZ ? rotateAmountZ : 0);
-    }
+	}
 }
