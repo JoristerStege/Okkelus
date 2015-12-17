@@ -1,32 +1,33 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class TriggerTiles : MonoBehaviour {
-
+public class TriggerTiles : MonoBehaviour
+{
     public GameObject tiles;
     private GameObject[] tileArr;
+    public GameObject Collider;
     public float time;
     public float repeatRate;
     int index;
     int childNumber;
+    bool EnteredTrigger = false;
 
-	// Use this for initialization
-	void Start () 
+    void Update()
     {
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	    
-	}
+        if (EnteredTrigger)
+        {
+            index = 0;
+            childNumber = tiles.transform.childCount;
+            InvokeRepeating("ApplyGravity", time, repeatRate);
+        }
+    }
+
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Test");
-            index = 0;
-            childNumber = tiles.transform.childCount;
-            InvokeRepeating("ApplyGravity", time, repeatRate);
+            EnteredTrigger = true;
+            Collider.SetActive(false);
         }
     }
 
@@ -36,7 +37,7 @@ public class TriggerTiles : MonoBehaviour {
         {
             tiles.transform.GetChild(index).gameObject.GetComponent<Rigidbody>().isKinematic = false;
             tiles.transform.GetChild(index).gameObject.GetComponent<Rigidbody>().useGravity = true;
-            
+
             //tile.GetComponent<Rigidbody>().useGravity = true;
             index++;
             return;
