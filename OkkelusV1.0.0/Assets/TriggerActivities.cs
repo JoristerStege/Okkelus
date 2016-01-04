@@ -9,6 +9,7 @@ public class TriggerActivities : MonoBehaviour
     public GameObject player;
     public GameObject ghoulStatic;
     public GameObject invisibleWall;
+    public GameObject Floor;
 
     private AudioSource audio;
     private AudioSource growl;
@@ -23,6 +24,7 @@ public class TriggerActivities : MonoBehaviour
     private bool enemySpawned;
     private bool ghoulEnabled;
     private bool sawGhoul;
+    private float timeLeft;
 
     // Use this for initialization
     void Start()
@@ -37,6 +39,7 @@ public class TriggerActivities : MonoBehaviour
         ghoulStatic.SetActive(false);
         invisibleWall.SetActive(false);
         col = GetComponent<BoxCollider>();
+        timeLeft = 5;
     }
 
     // Update is called once per frame
@@ -78,7 +81,18 @@ public class TriggerActivities : MonoBehaviour
             if (ghoulEnabled && OnScreen(ghoul.transform.position))
             {
                 PlayScareAudio();
-
+            }
+        }
+        else if (ghoulEnabled)
+        {
+            timeLeft -= Time.deltaTime;
+            Debug.Log(timeLeft);
+            if (timeLeft < 0)
+            {
+                DestroyImmediate(Floor);
+                Debug.Log(ghoulEnabled);
+                Debug.Log(Floor);
+                ghoulEnabled = false;
             }
         }
     }

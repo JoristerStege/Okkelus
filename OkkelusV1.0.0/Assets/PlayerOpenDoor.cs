@@ -15,8 +15,6 @@ public class PlayerOpenDoor : MonoBehaviour
     }
     void OpenDoorNow(Collider collider)
     {
-        Debug.Log("hi");
-
         Vector3 direction = collider.transform.position - transform.position;
         float angle = Vector3.Angle(direction, transform.forward);
         if (angle < cam.fieldOfView * 0.7f)

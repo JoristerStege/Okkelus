@@ -16,12 +16,29 @@ public class DoorScript : MonoBehaviour
     public float startAngleZ;
     public float EndAngleZ;
     public float rotateAmountZ;
+    public bool needCloths;
+    public PickupClothes clothesScript;
 
     void DoorOpen()
     {
-        transform.Rotate(
-            transform.eulerAngles.x < EndAngleX ? rotateAmountX : 0,
-            transform.eulerAngles.y < EndAngleY ? rotateAmountY : 0,
-            transform.eulerAngles.z < EndAngleZ ? rotateAmountZ : 0);
+        if (!needCloths)
+        {
+            transform.Rotate(
+                transform.eulerAngles.x < EndAngleX ? rotateAmountX : 0,
+                transform.eulerAngles.y < EndAngleY ? rotateAmountY : 0,
+                transform.eulerAngles.z < EndAngleZ ? rotateAmountZ : 0);
+        }
+        if (needCloths)
+        {
+            if (clothesScript.GotClothes())
+            {
+                transform.Rotate(
+                    transform.eulerAngles.x < EndAngleX ? rotateAmountX : 0,
+                    transform.eulerAngles.y < EndAngleY ? rotateAmountY : 0,
+                    transform.eulerAngles.z < EndAngleZ ? rotateAmountZ : 0);
+            }
+
+        }
+
     }
 }
