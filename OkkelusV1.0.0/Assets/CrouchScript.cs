@@ -25,7 +25,7 @@ public class CrouchScript : MonoBehaviour {
     {
         CapCollider.height = height / 2;
 
-         CapCollider.height = height;
+        CapCollider.height = height;
         // Cam.transform.position.Set(Cam.transform.position.x, stndheight, Cam.transform.position.z);
         if (Input.GetKey(KeyCode.Joystick1Button1) || Input.GetKey(KeyCode.LeftControl)) 
         {

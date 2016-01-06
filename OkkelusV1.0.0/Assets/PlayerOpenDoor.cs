@@ -10,7 +10,7 @@ public class PlayerOpenDoor : MonoBehaviour
     void OnTriggerStay(Collider other)
     {
         if (other.gameObject.tag == gameObjectTag)
-            if (Input.GetKey(KeyCode.Joystick1Button2))
+            if (Input.GetKey(KeyCode.Joystick1Button2) || Input.GetKey(KeyCode.E))
                 OpenDoorNow(other);
     }
     void OpenDoorNow(Collider collider)

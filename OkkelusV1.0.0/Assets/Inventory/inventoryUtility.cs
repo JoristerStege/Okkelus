@@ -20,6 +20,7 @@ public class inventoryUtility : MonoBehaviour {
     private GameObject[] invLine;
     private int selectedItem;
     private bool triggerPres;
+    private bool poweredKey;
 	void Start () {
         
         selectedItem = 0;
@@ -33,8 +34,8 @@ public class inventoryUtility : MonoBehaviour {
         {
             if (canvas.transform.GetChild(i).gameObject.tag == "Item")
             {
-                items[tempItem++] = canvas.transform.GetChild(i).gameObject;
-                //items[tempItem++].SetActive(false);
+                items[tempItem] = canvas.transform.GetChild(i).gameObject;
+                items[tempItem++].SetActive(false);
             }
             else if (canvas.transform.GetChild(i).gameObject.tag == "Border")
             {
@@ -43,8 +44,8 @@ public class inventoryUtility : MonoBehaviour {
             }
             else
             {
-                invLine[tempLine++] = canvas.transform.GetChild(i).gameObject;
-                //invLine[tempLine++].SetActive(false);
+                invLine[tempLine] = canvas.transform.GetChild(i).gameObject;
+                invLine[tempLine++].SetActive(false);
             }
         }
 	}
@@ -125,4 +126,29 @@ public class inventoryUtility : MonoBehaviour {
             }
         }
 	}
+    public GameObject GetSelectedItem()
+    {
+        return items[selectedItem];
+    }
+    public GameObject[] GetAllItems()
+    {
+        return items;
+    }
+    public void CraftKey()
+    {
+        if (items[0].activeSelf && items[1].activeSelf)
+            poweredKey = true;
+    }
+    public bool HasAllNotes()
+    {
+        if (items[2].activeSelf && items[3].activeSelf && items[4].activeSelf)
+            return true;
+        return false;
+    }
+    public bool GetPoweredKey()
+    {
+        return poweredKey;
+    }
+}
+
 }

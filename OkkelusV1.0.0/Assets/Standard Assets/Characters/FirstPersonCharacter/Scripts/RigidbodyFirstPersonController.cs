@@ -72,6 +72,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             public float stickToGroundHelperDistance = 0.5f; // stops the character
             public float slowDownRate = 20f; // rate at which the controller comes to a stop when there is no input
             public bool airControl; // can the user control the direction that is being moved in the air
+            
         }
 
 
@@ -79,10 +80,20 @@ namespace UnityStandardAssets.Characters.FirstPerson
         public MovementSettings movementSettings = new MovementSettings();
         public MouseLook mouseLook = new MouseLook();
         public AdvancedSettings advancedSettings = new AdvancedSettings();
+        public CapsuleCollider CapCollider;
+        public Rigidbody RigidBody;
 
-
+        private bool toggle;
         private Rigidbody m_RigidBody;
         private CapsuleCollider m_Capsule;
+        public Camera Cam;
+        private float height;
+        private float crouchHight;
+        private float camHeight;
+        private float stndheight;
+        private float width;
+        private Vector3 ofset;
+
         private float m_YRotation;
         private Vector3 m_GroundContactNormal;
         private bool m_Jump, m_PreviouslyGrounded, m_Jumping, m_IsGrounded;
@@ -121,6 +132,12 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_RigidBody = GetComponent<Rigidbody>();
             m_Capsule = GetComponent<CapsuleCollider>();
             mouseLook.Init (transform, cam.transform);
+            height = CapCollider.height;
+            width = CapCollider.radius;
+            crouchHight = 0.5f;
+            stndheight = Cam.transform.position.y;
+            camHeight = 0.5f;
+            ofset = Cam.transform.position - transform.position;
         }
 
 
@@ -132,6 +149,34 @@ namespace UnityStandardAssets.Characters.FirstPerson
             {
                 m_Jump = true;
             }
+            if (Input.GetKey(KeyCode.Joystick1Button1) || Input.GetKeyDown(KeyCode.LeftControl))
+            {
+                toggle = !toggle;
+                if (toggle)
+                    Cam.transform.position = Cam.transform.position - ofset;
+                else
+                    Cam.transform.position = transform.position + ofset;
+                //CapCollider.height = crouchHight;
+                //CapCollider.height = height / 2;
+                //width = width / 2;
+            }
+
+            if (toggle)
+            {
+                CapCollider.height = crouchHight;
+                CapCollider.height = 1;// height / 2;
+                width = width / 2;
+                //stndheight = stndheight / 2;
+                //Debug.Log(stndheight);
+                m_RigidBody.velocity = m_RigidBody.velocity / 2 ;
+                
+            }
+            else
+            {
+                CapCollider.height = height;
+                
+            }
+
         }
 
 
