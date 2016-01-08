@@ -10,7 +10,7 @@ public class PickupClothes : MonoBehaviour
     public Image panel;
     private Color fadeColor;
 
-    private bool gotClothes;
+    public bool gotClothes;
 
     public float distance;
 
@@ -49,23 +49,6 @@ public class PickupClothes : MonoBehaviour
             fadeState = FadeState.FadeOut;
             gotClothes = true;
         }
-
-        //RaycastHit hit;
-
-        //Ray rayMundo = new Ray(cam.transform.position, cam.transform.forward * 2);
-
-        //if (Physics.Raycast(rayMundo, out hit))
-        //{
-        //    if (hit.collider.tag == "Clothes")
-        //    {
-        //        clothes = hit.collider.gameObject;
-        //        //GUITexture texture = cam.GetComponent<GUITexture>();
-        //        //texture.color = Color.Lerp(texture.color, Color.black, fadeSpeed * Time.deltaTime);
-
-        //        fadeState = FadeState.FadeOut;
-        //        gotClothes = true;
-        //    }
-        //}
     }
 
     private void FadeScreen()

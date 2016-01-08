@@ -174,7 +174,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
             else
             {
                 CapCollider.height = height;
-                
             }
 
         }

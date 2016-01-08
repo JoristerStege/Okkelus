@@ -151,7 +151,3 @@ public class inventoryUtility : MonoBehaviour {
     }
 }
 
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/Development
