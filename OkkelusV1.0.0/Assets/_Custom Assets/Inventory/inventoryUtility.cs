@@ -147,6 +147,7 @@ public class inventoryUtility : MonoBehaviour {
     }
     public bool GetPoweredKey()
     {
+        CraftKey();
         return poweredKey;
     }
 }
