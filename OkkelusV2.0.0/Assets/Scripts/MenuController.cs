@@ -18,6 +18,7 @@ public class MenuController : MonoBehaviour {
         texts = new Text[] {text1, text2, text3 };
         index = 0;
         texts[index].text += " <";
+        PlayerPrefs.SetInt("Level", 1);
     }
 	
 	// Update is called once per frame
@@ -65,7 +66,7 @@ public class MenuController : MonoBehaviour {
             switch (index)
             {
                 case 0:
-                    Application.LoadLevel("A03Release");
+                    Application.LoadLevel("Level1");
                     break;
                 case 1:
                     Application.LoadLevel("Credits");

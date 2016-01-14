@@ -21,6 +21,8 @@ public class inventoryUtility : MonoBehaviour {
     private int selectedItem;
     private bool triggerPres;
     private bool poweredKey;
+    [SerializeField]
+    private LayerMask raycastLayer;
 	void Start () {
         
         selectedItem = 0;
@@ -112,7 +114,7 @@ public class inventoryUtility : MonoBehaviour {
                 {
                     Ray ray = new Ray(transform.position, direction);
                     RaycastHit hit;
-                    if (Physics.Raycast(ray, out hit, direction.magnitude + 10))
+                    if (Physics.Raycast(transform.position, direction, out hit, direction.magnitude + 10, raycastLayer))
                         if (hit.transform.CompareTag(Tag))
                         {
                             invLine[0].SetActive(true);
