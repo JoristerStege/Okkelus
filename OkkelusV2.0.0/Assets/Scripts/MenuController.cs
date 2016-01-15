@@ -18,6 +18,7 @@ public class MenuController : MonoBehaviour {
         texts = new Text[] {text1, text2, text3 };
         index = 0;
         texts[index].text += " <";
+        PlayerPrefs.SetInt("Level", 1);
     }
 	
 	// Update is called once per frame

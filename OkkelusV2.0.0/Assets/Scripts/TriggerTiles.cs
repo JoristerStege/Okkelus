@@ -19,7 +19,6 @@ public class TriggerTiles : MonoBehaviour
             index = 0;
             childNumber = tiles.transform.childCount;
             InvokeRepeating("ApplyGravity", time, repeatRate);
-            Debug.Log("Okke learn to use arrays.");
         }
     }
 
@@ -28,8 +27,6 @@ public class TriggerTiles : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             EnteredTrigger = true;
-            Debug.Log("Okke learn to use arrays.");
-
             //Collider.SetActive(false);
         }
     }

@@ -78,7 +78,7 @@ public class PauseController : MonoBehaviour
                         script.enabled = true;
                         break;
                     case 1:
-                        Application.LoadLevel("A03Release");
+                        Application.LoadLevel(Application.loadedLevelName);
                         break;
                     case 2:
                         Application.Quit();
