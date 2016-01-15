@@ -103,7 +103,7 @@ public class inventoryUtility : MonoBehaviour {
         if (Input.GetAxis("inventory") == 0 && triggerPres)
             triggerPres = false;
 
-        if (Input.GetKeyUp(KeyCode.E))
+        if (Input.GetKeyUp(KeyCode.E) || Input.GetKeyUp(KeyCode.JoystickButton2))
         {
             Collider[] item = Physics.OverlapSphere(transform.position, colliderRadius, m_ItemLayer);
             for (int i = 0; i < item.Length; i++)

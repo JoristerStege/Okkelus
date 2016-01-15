@@ -39,7 +39,7 @@ public class TriggerActivities : MonoBehaviour
         ghoulStatic.SetActive(false);
         invisibleWall.SetActive(false);
         col = GetComponent<BoxCollider>();
-        timeLeft = 5;
+        timeLeft = 1.5f;
     }
 
     // Update is called once per frame
