@@ -65,7 +65,7 @@ public class MenuController : MonoBehaviour {
             switch (index)
             {
                 case 0:
-                    Application.LoadLevel("A03Release");
+                    Application.LoadLevel("Level1");
                     break;
                 case 1:
                     Application.LoadLevel("Credits");
