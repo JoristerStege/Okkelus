@@ -5,24 +5,35 @@ using UnityEngine.UI;
 public class GotoNextLevel : MonoBehaviour {
 
     [SerializeField]
-    private CapsuleCollider Player;
+    private CapsuleCollider PlayerCollider;
     [SerializeField]
     private Text loadText;
+    [SerializeField][Tooltip("Only needed in Lvl 3")]
+    private UnityStandardAssets.Characters.FirstPerson.RigidbodyFirstPersonController Player;
     private bool hit;
+    private bool loading;
     private float timeToLoad = 0;
 	
     void OnTriggerEnter(Collider col)
     {
-        if (col == Player && !hit)
+
+        if (col == PlayerCollider && !hit)
         {
             hit = true;
-            loadText.enabled = true;
-            loadText.horizontalOverflow = HorizontalWrapMode.Overflow;
-            loadText.text = "Well Done, You completed this level. \nLoading next Level... \nPlease Wait";
-
+            if (Application.loadedLevelName == "Level3")
+            {
+                DontDestroyOnLoad(Player);
+                timeToLoad = 2;
+            }
+            else
+            {
+                loadText.enabled = true;
+                loadText.horizontalOverflow = HorizontalWrapMode.Overflow;
+                loadText.text = "Well Done, You completed this level. \nLoading next Level... \nPlease Wait";
+            }
         }
-        
     }
+
     void Update()
     {
         if (hit)
