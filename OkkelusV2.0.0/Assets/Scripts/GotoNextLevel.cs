@@ -4,32 +4,35 @@ using UnityEngine.UI;
 
 public class GotoNextLevel : MonoBehaviour {
 
-    [SerializeField]
-    private CapsuleCollider PlayerCollider;
-    [SerializeField]
     private Text loadText;
-    [SerializeField][Tooltip("Only needed in Lvl 3")]
-    private UnityStandardAssets.Characters.FirstPerson.RigidbodyFirstPersonController Player;
     private bool hit;
     private bool loading;
     private float timeToLoad = 0;
 	
     void OnTriggerEnter(Collider col)
     {
-
-        if (col == PlayerCollider && !hit)
+        if (col.isTrigger)
+            return;
+        if (col.gameObject.name == "RigidBodyFPSController" && !hit)
         {
+            Component[] temp;
+            temp = col.gameObject.GetComponentsInChildren(typeof(Camera));
+            temp = temp[0].GetComponentsInChildren(typeof(Canvas));
+            temp = temp[2].GetComponentsInChildren(typeof(Text));
+            loadText = (Text)temp[0];
             hit = true;
-            if (Application.loadedLevelName == "Level3")
-            {
-                DontDestroyOnLoad(Player);
-                timeToLoad = 2;
-            }
-            else
+           
+            if (Application.loadedLevelName != "Level3")
             {
                 loadText.enabled = true;
                 loadText.horizontalOverflow = HorizontalWrapMode.Overflow;
                 loadText.text = "Well Done, You completed this level. \nLoading next Level... \nPlease Wait";
+            }
+            if (Application.loadedLevelName != "Level1")
+            {
+                DontDestroyOnLoad(col.gameObject.gameObject);
+                PlayerPrefs.SetInt("Level", PlayerPrefs.GetInt("Level") + 1);
+                Application.LoadLevelAsync("Level" + PlayerPrefs.GetInt("Level"));
             }
         }
     }
@@ -42,6 +45,10 @@ public class GotoNextLevel : MonoBehaviour {
             if (timeToLoad > 1.5f)
             {
                 hit = false;
+                loadText.enabled = false;
+            }
+            if (timeToLoad > 1.5f && Application.loadedLevelName == "Level1")
+            {
                 PlayerPrefs.SetInt("Level", PlayerPrefs.GetInt("Level") + 1);
                 Application.LoadLevelAsync("Level" + PlayerPrefs.GetInt("Level"));
             }
