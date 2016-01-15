@@ -32,60 +32,62 @@ public class PauseController : MonoBehaviour
             canvas.enabled = true;
             script.enabled = false;
         }
-
-        wait += Time.deltaTime;
-
-        if (wait >= 0.15)
+        if (canvas.enabled)
         {
-            if (Input.GetAxis("DpadVertical") > 0 || Input.GetKey(KeyCode.UpArrow))
+            wait += Time.deltaTime;
+
+            if (wait >= 0.15)
             {
-                texts[index].text = texts[index].text.Trim(" <".ToCharArray());
-                if (index == 0)
+                if (Input.GetAxis("DpadVertical") > 0 || Input.GetKey(KeyCode.UpArrow))
                 {
-                    index = 2;
-                }
-                else
-                {
-                    index--;
-                }
+                    texts[index].text = texts[index].text.Trim(" <".ToCharArray());
+                    if (index == 0)
+                    {
+                        index = 2;
+                    }
+                    else
+                    {
+                        index--;
+                    }
 
-                texts[index].text += " <";
-            }
-
-            if (Input.GetAxis("DpadVertical") < 0 || Input.GetKey(KeyCode.DownArrow))
-            {
-                texts[index].text = texts[index].text.Trim(" <".ToCharArray());
-                if (index == 2)
-                {
-                    index = 0;
-                }
-                else
-                {
-                    index++;
+                    texts[index].text += " <";
                 }
 
-                texts[index].text += " <";
-            }
-            wait = 0;
-
-
-            if (Input.GetButton("Fire1"))
-            {
-                switch (index)
+                if (Input.GetAxis("DpadVertical") < 0 || Input.GetKey(KeyCode.DownArrow))
                 {
-                    case 0:
-                        canvas.enabled = false;
-                        script.enabled = true;
-                        break;
-                    case 1:
-                        Application.LoadLevel(Application.loadedLevelName);
-                        break;
-                    case 2:
-                        Application.Quit();
-                        //Application.LoadLevel("Startmenu");
-                        break;
-                    default:
-                        break;
+                    texts[index].text = texts[index].text.Trim(" <".ToCharArray());
+                    if (index == 2)
+                    {
+                        index = 0;
+                    }
+                    else
+                    {
+                        index++;
+                    }
+
+                    texts[index].text += " <";
+                }
+                wait = 0;
+
+
+                if (Input.GetButton("Fire1"))
+                {
+                    switch (index)
+                    {
+                        case 0:
+                            canvas.enabled = false;
+                            script.enabled = true;
+                            break;
+                        case 1:
+                            Application.LoadLevel(Application.loadedLevelName);
+                            break;
+                        case 2:
+                            Application.Quit();
+                            //Application.LoadLevel("Startmenu");
+                            break;
+                        default:
+                            break;
+                    }
                 }
             }
         }
