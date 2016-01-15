@@ -1,30 +1,39 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class GotoNextLevel : MonoBehaviour {
 
     [SerializeField]
     private CapsuleCollider Player;
+    [SerializeField]
+    private Text loadText;
     private bool hit;
-    private AsyncOperation loadnew;
+    private float timeToLoad = 0;
 	
-    void OnCollisionEnter(Collision col)
+    void OnTriggerEnter(Collider col)
     {
-        if (col.collider == Player && !hit)
+        if (col == Player && !hit)
         {
             hit = true;
-           // Application.LoadLevelAsync
-            //Application.UnloadLevel("Level" + PlayerPrefs.GetInt("Level"));
-            PlayerPrefs.SetInt("Level", 2);//PlayerPrefs.GetInt("Level") + 1);
-            loadnew = Application.LoadLevelAsync("Level" + PlayerPrefs.GetInt("Level"));
+            loadText.enabled = true;
+            loadText.horizontalOverflow = HorizontalWrapMode.Overflow;
+            loadText.text = "Well Done, You completed this level. \nLoading next Level... \nPlease Wait";
+
         }
+        
     }
-    void OnCollisionStay(Collision col)
+    void Update()
     {
         if (hit)
         {
-            Debug.Log(loadnew.progress);
-            
+            timeToLoad += Time.deltaTime;
+            if (timeToLoad > 1.5f)
+            {
+                hit = false;
+                PlayerPrefs.SetInt("Level", PlayerPrefs.GetInt("Level") + 1);
+                Application.LoadLevelAsync("Level" + PlayerPrefs.GetInt("Level"));
+            }
         }
     }
 }
