@@ -28,26 +28,22 @@ public class GotoNextLevel : MonoBehaviour {
                 loadText.horizontalOverflow = HorizontalWrapMode.Overflow;
                 loadText.text = "Well Done, You completed this level. \nLoading next Level... \nPlease Wait";
             }
-            if (Application.loadedLevelName != "Level1")
+            if (Application.loadedLevelName == "Level3")
             {
                 DontDestroyOnLoad(col.gameObject.gameObject);
                 PlayerPrefs.SetInt("Level", PlayerPrefs.GetInt("Level") + 1);
                 Application.LoadLevelAsync("Level" + PlayerPrefs.GetInt("Level"));
+                loading = true;
             }
         }
     }
 
     void Update()
     {
-        if (hit)
+        if (hit && !loading)
         {
             timeToLoad += Time.deltaTime;
             if (timeToLoad > 1.5f)
-            {
-                hit = false;
-                loadText.enabled = false;
-            }
-            if (timeToLoad > 1.5f && Application.loadedLevelName == "Level1")
             {
                 PlayerPrefs.SetInt("Level", PlayerPrefs.GetInt("Level") + 1);
                 Application.LoadLevelAsync("Level" + PlayerPrefs.GetInt("Level"));
