@@ -72,14 +72,14 @@ public class PickupBooks : MonoBehaviour
         pickup.transform.parent = null;
         rb.useGravity = true;
         rb.isKinematic = false;
-        rb.AddForce(cam.transform.forward * 1000f);
+        rb.AddForce(cam.transform.forward * 500f);
         rb = null;
         pickup = null;
     }
 
     private void DragObject()
     {
-        pickup.transform.position = cam.transform.position + cam.transform.forward * 0.8f;
+        pickup.transform.position = cam.transform.position + cam.transform.forward * 1.2f;
     }
 
     private void PickupObject()
