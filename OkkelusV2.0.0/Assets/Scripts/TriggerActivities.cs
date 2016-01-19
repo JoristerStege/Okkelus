@@ -24,7 +24,7 @@ public class TriggerActivities : MonoBehaviour
     private bool enemySpawned;
     private bool ghoulEnabled;
     private bool sawGhoul;
-    private float timeLeft;
+    public float timeLeft;
 
     // Use this for initialization
     void Start()
@@ -39,7 +39,7 @@ public class TriggerActivities : MonoBehaviour
         ghoulStatic.SetActive(false);
         invisibleWall.SetActive(false);
         col = GetComponent<BoxCollider>();
-        timeLeft = 1.5f;
+        timeLeft = 1.0f;
     }
 
     // Update is called once per frame
