@@ -3,46 +3,40 @@ Initialize engine version: 5.2.2f1 (3757309da7e7)
 GfxDevice: creating device client; threaded=1
 Direct3D:
     Version:  Direct3D 11.0 [level 11.0]
-    Renderer: NVIDIA GeForce GTX 860M (ID=0x1392)
+    Renderer: NVIDIA GeForce GT 750M      (ID=0xfe4)
     Vendor:   NVIDIA
-    VRAM:     1972 MB
+    VRAM:     1988 MB
 Begin MonoManager ReloadAssembly
-Platform assembly: C:\Users\Jordi\Documents\GitHub\Okkelus\OkkelusV2.0.0\Build_Data\Managed\UnityEngine.dll (this message is harmless)
-Loading C:\Users\Jordi\Documents\GitHub\Okkelus\OkkelusV2.0.0\Build_Data\Managed\UnityEngine.dll into Unity Child Domain
-Platform assembly: C:\Users\Jordi\Documents\GitHub\Okkelus\OkkelusV2.0.0\Build_Data\Managed\Assembly-CSharp.dll (this message is harmless)
-Loading C:\Users\Jordi\Documents\GitHub\Okkelus\OkkelusV2.0.0\Build_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
-Platform assembly: C:\Users\Jordi\Documents\GitHub\Okkelus\OkkelusV2.0.0\Build_Data\Managed\Assembly-UnityScript.dll (this message is harmless)
-Loading C:\Users\Jordi\Documents\GitHub\Okkelus\OkkelusV2.0.0\Build_Data\Managed\Assembly-UnityScript.dll into Unity Child Domain
-Platform assembly: C:\Users\Jordi\Documents\GitHub\Okkelus\OkkelusV2.0.0\Build_Data\Managed\UnityEngine.UI.dll (this message is harmless)
-Loading C:\Users\Jordi\Documents\GitHub\Okkelus\OkkelusV2.0.0\Build_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
-Platform assembly: C:\Users\Jordi\Documents\GitHub\Okkelus\OkkelusV2.0.0\Build_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
-Loading C:\Users\Jordi\Documents\GitHub\Okkelus\OkkelusV2.0.0\Build_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
-Platform assembly: C:\Users\Jordi\Documents\GitHub\Okkelus\OkkelusV2.0.0\Build_Data\Managed\System.Core.dll (this message is harmless)
-- Completed reload, in  0.101 seconds
-desktop: 1920x1080 60Hz; virtual: 3360x1080 at 0,0
+Platform assembly: C:\Users\sjoerd\Documents\GitHub\Okkelus\OkkelusV2.0.0\Build_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\sjoerd\Documents\GitHub\Okkelus\OkkelusV2.0.0\Build_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\sjoerd\Documents\GitHub\Okkelus\OkkelusV2.0.0\Build_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\sjoerd\Documents\GitHub\Okkelus\OkkelusV2.0.0\Build_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\sjoerd\Documents\GitHub\Okkelus\OkkelusV2.0.0\Build_Data\Managed\Assembly-UnityScript.dll (this message is harmless)
+Loading C:\Users\sjoerd\Documents\GitHub\Okkelus\OkkelusV2.0.0\Build_Data\Managed\Assembly-UnityScript.dll into Unity Child Domain
+Platform assembly: C:\Users\sjoerd\Documents\GitHub\Okkelus\OkkelusV2.0.0\Build_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\sjoerd\Documents\GitHub\Okkelus\OkkelusV2.0.0\Build_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\Users\sjoerd\Documents\GitHub\Okkelus\OkkelusV2.0.0\Build_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading C:\Users\sjoerd\Documents\GitHub\Okkelus\OkkelusV2.0.0\Build_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: C:\Users\sjoerd\Documents\GitHub\Okkelus\OkkelusV2.0.0\Build_Data\Managed\System.Core.dll (this message is harmless)
+- Completed reload, in  0.147 seconds
+desktop: 3200x1800 60Hz; virtual: 3200x1800 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
 <RI> Initialized touch support.
-Platform assembly: C:\Users\Jordi\Documents\GitHub\Okkelus\OkkelusV2.0.0\Build_Data\Managed\System.dll (this message is harmless)
-Setting up 2 worker threads for Enlighten.
-  Thread -> id: 11210 -> priority: 1 
-  Thread -> id: 11d8c -> priority: 1 
+Platform assembly: C:\Users\sjoerd\Documents\GitHub\Okkelus\OkkelusV2.0.0\Build_Data\Managed\System.dll (this message is harmless)
 [VRDevice] Initialization of device oculus failed.
+Setting up 2 worker threads for Enlighten.
+  Thread -> id: 884 -> priority: 1 
+  Thread -> id: 128c -> priority: 1 
 Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 111.007111 ms
+UnloadTime: 4.151882 ms
 
-Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 996.
-Total: 0.305035 ms (FindLiveObjects: 0.040233 ms CreateObjectMapping: 0.031201 ms MarkObjects: 0.227852 ms  DeleteObjects: 0.005337 ms)
+Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 997.
+Total: 0.274441 ms (FindLiveObjects: 0.032576 ms CreateObjectMapping: 0.028559 ms MarkObjects: 0.208397 ms  DeleteObjects: 0.004462 ms)
 
 Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 17.976984 ms
+UnloadTime: 0.993792 ms
 
-Unloading 69 unused Assets to reduce memory usage. Loaded Objects now: 972.
-Total: 0.494707 ms (FindLiveObjects: 0.047212 ms CreateObjectMapping: 0.023811 ms MarkObjects: 0.275476 ms  DeleteObjects: 0.147796 ms)
-
-Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 0.664673 ms
-
-Unloading 89 unused Assets to reduce memory usage. Loaded Objects now: 2213.
-Total: 0.975867 ms (FindLiveObjects: 0.107563 ms CreateObjectMapping: 0.040233 ms MarkObjects: 0.663852 ms  DeleteObjects: 0.163807 ms)
+Unloading 69 unused Assets to reduce memory usage. Loaded Objects now: 1137.
+Total: 0.563163 ms (FindLiveObjects: 0.033468 ms CreateObjectMapping: 0.028559 ms MarkObjects: 0.352535 ms  DeleteObjects: 0.148600 ms)
 
