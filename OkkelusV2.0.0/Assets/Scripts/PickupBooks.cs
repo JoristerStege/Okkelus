@@ -1,30 +1,26 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PickupBooks : MonoBehaviour 
+public class PickupBooks : MonoBehaviour
 {
-    private Camera cam;    
+    private Camera cam;
     private GameObject pickup;
     private Rigidbody rb;
-    private bool gotObject, lmUp, rmUp;
+    private bool gotObject, pickupBtnPressed;
 
     void Start()
     {
         gotObject = false;
         Cursor.visible = false;
         cam = GetComponentInChildren<Camera>();
+        pickupBtnPressed = false;
     }
 
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
-            lmUp = true;
-        }
-
-        else if (Input.GetMouseButtonUp(1))
-        {
-            rmUp = true;
+            pickupBtnPressed = !pickupBtnPressed;
         }
 
         else if (Input.GetKeyUp(KeyCode.Escape))
@@ -35,27 +31,19 @@ public class PickupBooks : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (lmUp)
-        {
-            if (!gotObject)
-            {
-                PickupObject();
-            }
-            lmUp = false;
-        }
-
-        if (rmUp)
-        {
-            if (gotObject)
-            {
-                DropObject();
-            }
-            rmUp = false;
-        }
-
         if (gotObject)
         {
-            DragObject();
+            if (pickupBtnPressed)
+            {
+                DropObject();
+                pickupBtnPressed = false;
+            }
+            else DragObject();
+        }
+        else if (!gotObject && pickupBtnPressed)
+        {
+            PickupObject();
+            pickupBtnPressed = false;
         }
     }
 
@@ -72,14 +60,14 @@ public class PickupBooks : MonoBehaviour
         pickup.transform.parent = null;
         rb.useGravity = true;
         rb.isKinematic = false;
-        rb.AddForce(cam.transform.forward * 1000f);
+        rb.AddForce(cam.transform.forward * 500f);
         rb = null;
         pickup = null;
     }
 
     private void DragObject()
     {
-        pickup.transform.position = cam.transform.position + cam.transform.forward * 0.8f;
+        pickup.transform.position = cam.transform.position + cam.transform.forward * 1.2f;
     }
 
     private void PickupObject()
@@ -99,10 +87,9 @@ public class PickupBooks : MonoBehaviour
             {
                 if (Vector3.Distance(pickup.transform.position, cam.transform.position) < 2)
                 {
-                    //pickup.transform.parent = gameObject.transform;
                     pickup.transform.parent = gameObject.transform;
                     rb = pickup.GetComponent<Rigidbody>();
-                    rb.isKinematic = true;
+                    rb.isKinematic = false;
                     rb.useGravity = false;
                     //rb = pickup.GetComponent<Rigidbody>();
                     gotObject = true;
