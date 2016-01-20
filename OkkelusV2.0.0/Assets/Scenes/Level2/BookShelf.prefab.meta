@@ -1,6 +1,11 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 4506f3e3a1e149744a4ec5e34c095f6c
 timeCreated: 1453203436
+=======
+guid: 8dfac09c98050b54aac8f96752abf4ae
+timeCreated: 1453202675
+>>>>>>> origin/OkkelusV2.0.0
 licenseType: Free
 NativeFormatImporter:
   userData: 
