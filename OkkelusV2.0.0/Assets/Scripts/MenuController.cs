@@ -69,7 +69,7 @@ public class MenuController : MonoBehaviour {
         }
 
 
-        if (Input.GetButton("Fire1") || Input.GetKeyDown(KeyCode.Return))
+        if (Input.GetButton("Fire1") || Input.GetButton("Submit"))
         {
             switch (index)
             {
