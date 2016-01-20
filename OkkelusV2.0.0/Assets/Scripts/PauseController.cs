@@ -70,7 +70,7 @@ public class PauseController : MonoBehaviour
                 wait = 0;
 
 
-                if (Input.GetButton("Fire1") || Input.GetKeyDown(KeyCode.Return))
+                if (Input.GetButton("Fire1") || Input.GetButton("Submit"))
                 {
                     switch (index)
                     {
