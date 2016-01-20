@@ -13,12 +13,20 @@ public class MenuController : MonoBehaviour {
     private Text[] texts;
     private float wait;
 
+    private AsyncOperation level1;
+    private AsyncOperation credits;
+
 	// Use this for initialization
-	void Start () {
+	void Start () 
+    {
         texts = new Text[] {text1, text2, text3 };
         index = 0;
         texts[index].text += " <";
         PlayerPrefs.SetInt("Level", 1);
+        level1 = Application.LoadLevelAsync("Level1");
+        level1.allowSceneActivation = false;
+        credits = Application.LoadLevelAsync("Credits");
+        credits.allowSceneActivation = false;
     }
 	
 	// Update is called once per frame
@@ -66,12 +74,15 @@ public class MenuController : MonoBehaviour {
             switch (index)
             {
                 case 0:
-                    Application.LoadLevel("Level1");
+                    level1.allowSceneActivation = true;
+                    //Application.LoadLevel("Level1");
                     break;
                 case 1:
-                    Application.LoadLevel("Credits");
+                    credits.allowSceneActivation = true;
+                    //Application.LoadLevel("Credits");
                     break;
                 case 2:
+                    Application.Quit();
                     break;
                 default:
                     break;
