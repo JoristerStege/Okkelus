@@ -45,6 +45,7 @@ public class GotoNextLevel : MonoBehaviour {
             timeToLoad += Time.deltaTime;
             if (timeToLoad > 1.5f)
             {
+                hit = false;
                 PlayerPrefs.SetInt("Level", PlayerPrefs.GetInt("Level") + 1);
                 Application.LoadLevelAsync("Level" + PlayerPrefs.GetInt("Level"));
             }

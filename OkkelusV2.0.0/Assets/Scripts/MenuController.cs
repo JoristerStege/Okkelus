@@ -28,7 +28,7 @@ public class MenuController : MonoBehaviour {
 
         if (wait >= 0.15)
         {
-            if (Input.GetAxis("DpadVertical") > 0)
+            if (Input.GetAxis("DpadVertical") > 0 || Input.GetKey(KeyCode.UpArrow))
             {
                 texts[index].text = texts[index].text.Trim(" <".ToCharArray());
                 if (index == 0)
@@ -43,7 +43,7 @@ public class MenuController : MonoBehaviour {
                 texts[index].text += " <";
             }
 
-            if (Input.GetAxis("DpadVertical") < 0)
+            if (Input.GetAxis("DpadVertical") < 0 || Input.GetKey(KeyCode.DownArrow))
             {
                 texts[index].text = texts[index].text.Trim(" <".ToCharArray());
                 if (index == 2)
@@ -61,7 +61,7 @@ public class MenuController : MonoBehaviour {
         }
 
 
-        if (Input.GetButton("Fire1"))
+        if (Input.GetButton("Fire1") || Input.GetKeyDown(KeyCode.Return))
         {
             switch (index)
             {
