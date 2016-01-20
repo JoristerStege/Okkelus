@@ -31,36 +31,38 @@ public class FridgeLock : MonoBehaviour {
 	void Update () {
         if (canvas.enabled)
         {
+            topSelect[selected].SetActive(true);
+            bottumSelect[selected].SetActive(true);
             // nummer seleteren 
             #region numberSelect
-            if (Input.GetAxis("DpadVertical") != 0 && !vertPressed)
+            if ((Input.GetAxis("DpadVertical") != 0 || (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S))) && !vertPressed)
             {
                 vertPressed = true;
                 int num = int.Parse(inputfield[selected].text);
 
-                if (Input.GetAxis("DpadVertical") < 0)
+                if (Input.GetAxis("DpadVertical") < 0 || Input.GetKey(KeyCode.S))
                     num = num == 0 ? 9 : --num;
 
-                if (Input.GetAxis("DpadVertical") > 0)
+                if (Input.GetAxis("DpadVertical") > 0 || Input.GetKey(KeyCode.W))
                     num = num == 9 ? 0 : ++num;
 
                 inputfield[selected].text = num.ToString();
             }
-            else if (Input.GetAxis("DpadVertical") == 0 && vertPressed)
+            else if (Input.GetAxis("DpadVertical") == 0 && (!Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.S)) && vertPressed)
                 vertPressed = false;
             #endregion
             // inputfield veranderen
             #region inputfield
-            if (Input.GetAxis("DpadHorizontal") != 0 && !HorizontalPressed)
+            if ((Input.GetAxis("DpadHorizontal") != 0 || (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))) && !HorizontalPressed)
             {
                 HorizontalPressed = true;
                 topSelect[selected].SetActive(false);
                 bottumSelect[selected].SetActive(false);
 
-                if (Input.GetAxis("DpadHorizontal") < 0)
+                if (Input.GetAxis("DpadHorizontal") < 0 || Input.GetKey(KeyCode.A))
                     selected--;
 
-                if (Input.GetAxis("DpadHorizontal") > 0)
+                if (Input.GetAxis("DpadHorizontal") > 0 || Input.GetKey(KeyCode.D))
                     selected++;
 
                 if (selected < 0)
@@ -71,14 +73,14 @@ public class FridgeLock : MonoBehaviour {
                 topSelect[selected].SetActive(true);
                 bottumSelect[selected].SetActive(true);
             }
-            else if (Input.GetAxis("DpadHorizontal") == 0 && HorizontalPressed)
+            else if (Input.GetAxis("DpadHorizontal") == 0 && (!Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D))&& HorizontalPressed)
             {
                 HorizontalPressed = false;
             }
             #endregion
         }
-        // A button
-        if (Input.GetKeyDown(KeyCode.JoystickButton0))
+        // Y button
+        if (Input.GetKeyDown(KeyCode.JoystickButton3) || Input.GetKeyDown(KeyCode.Q))
         {
             string num = "";
             for (int i = 0; i < 3; i++)
@@ -93,7 +95,7 @@ public class FridgeLock : MonoBehaviour {
             }
         }
         // B button
-        if (Input.GetKeyDown(KeyCode.JoystickButton1))
+        if (Input.GetKeyDown(KeyCode.JoystickButton1) || Input.GetKeyDown(KeyCode.R))
         {
             canvas.enabled = false;
 
@@ -101,7 +103,7 @@ public class FridgeLock : MonoBehaviour {
                 inputfield[i].text = "0";
         }
         // X button
-        if (Input.GetKeyDown(KeyCode.JoystickButton2))
+        if (Input.GetKeyDown(KeyCode.JoystickButton2) || Input.GetKeyDown(KeyCode.E))
         {
             #region
             Collider[] item = Physics.OverlapSphere(transform.position, colliderRadius, layer);
