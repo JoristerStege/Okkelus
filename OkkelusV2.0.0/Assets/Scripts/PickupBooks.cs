@@ -11,21 +11,15 @@ public class PickupBooks : MonoBehaviour
     void Start()
     {
         gotObject = false;
-        Cursor.visible = false;
         cam = GetComponentInChildren<Camera>();
         pickupBtnPressed = false;
     }
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.JoystickButton1))
         {
             pickupBtnPressed = !pickupBtnPressed;
-        }
-
-        else if (Input.GetKeyUp(KeyCode.Escape))
-        {
-            Cursor.visible = !Cursor.visible;
         }
     }
 

@@ -82,8 +82,8 @@ public class PauseController : MonoBehaviour
                             Application.LoadLevel(Application.loadedLevelName);
                             break;
                         case 2:
-                            Application.Quit();
-                            //Application.LoadLevel("Startmenu");
+                            //Application.Quit();
+                            Application.LoadLevel("Startmenu");
                             break;
                         default:
                             break;
