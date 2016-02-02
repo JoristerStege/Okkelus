@@ -84,15 +84,17 @@ public class FridgeLock : MonoBehaviour {
         {
             string num = "";
             for (int i = 0; i < 3; i++)
-            {
                 num += inputfield[i].text;
-            }
 
             if (code == int.Parse(num))
             {
                 fridgeCollider.isTrigger = true;
                 canvas.enabled = false;
+                Destroy(canvas);
             }
+            else
+                for (int i = 0; i < 3; i++)
+                    inputfield[i].text = "0";
         }
         // B button
         if (Input.GetKeyDown(KeyCode.JoystickButton1) || Input.GetKeyDown(KeyCode.R))

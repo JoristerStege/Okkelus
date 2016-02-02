@@ -41,6 +41,8 @@ public class MenuController : MonoBehaviour {
                 }
 
                 texts[index].text += " <";
+                wait = 0;
+
             }
 
             if (Input.GetAxis("DpadVertical") < 0 || Input.GetKey(KeyCode.DownArrow))
@@ -56,8 +58,9 @@ public class MenuController : MonoBehaviour {
                 }
 
                 texts[index].text += " <";
+                wait = 0;
+
             }
-            wait = 0;
         }
 
 
@@ -66,9 +69,11 @@ public class MenuController : MonoBehaviour {
             switch (index)
             {
                 case 0:
+                    Application.UnloadLevel(Application.loadedLevel);
                     Application.LoadLevel("Level1");
                     break;
                 case 1:
+                    Application.UnloadLevel(Application.loadedLevel);
                     Application.LoadLevel("Credits");
                     break;
                 case 2:

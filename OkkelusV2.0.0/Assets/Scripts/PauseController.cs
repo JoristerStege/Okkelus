@@ -51,6 +51,8 @@ public class PauseController : MonoBehaviour
                     }
 
                     texts[index].text += " <";
+                    wait = 0;
+
                 }
 
                 if (Input.GetAxis("DpadVertical") < 0 || Input.GetKey(KeyCode.DownArrow))
@@ -66,8 +68,9 @@ public class PauseController : MonoBehaviour
                     }
 
                     texts[index].text += " <";
+                    wait = 0;
+
                 }
-                wait = 0;
 
 
                 if (Input.GetButton("Fire1") || Input.GetButton("Submit"))
@@ -79,10 +82,12 @@ public class PauseController : MonoBehaviour
                             script.enabled = true;
                             break;
                         case 1:
+                            Application.UnloadLevel(Application.loadedLevel);
                             Application.LoadLevel(Application.loadedLevelName);
                             break;
                         case 2:
                             //Application.Quit();
+                            Application.UnloadLevel(Application.loadedLevel);
                             Application.LoadLevel("Startmenu");
                             break;
                         default:

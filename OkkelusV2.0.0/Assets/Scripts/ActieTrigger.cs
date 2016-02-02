@@ -5,7 +5,6 @@ public class ActieTrigger : MonoBehaviour {
 
     public GameObject floor;
    
-    public GameObject floorCollider;
     public Material[] lavaArray;
    
     private bool isLava;
@@ -26,7 +25,6 @@ public class ActieTrigger : MonoBehaviour {
 	void Update () {
         if (isLava && lavaSpeed == 5)
         {
-            Debug.Log(lavaSpeed.ToString());
             rend.material = lavaArray[index];
             lavaSpeed = 0;
             index++;
@@ -46,7 +44,6 @@ public class ActieTrigger : MonoBehaviour {
     {
         if (other.gameObject.CompareTag("Player"))
         {
-           // rend.material = lava;
             isLava = true;
         }
     }

@@ -17,7 +17,7 @@ public class PickupBooks : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.JoystickButton1))
+        if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.JoystickButton2))
         {
             pickupBtnPressed = !pickupBtnPressed;
         }
